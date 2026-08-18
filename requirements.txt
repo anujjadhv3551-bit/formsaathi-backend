@@ -1,6 +1,6 @@
 flask
 flask-cors
-google-genai
+google-generativeai
 opencv-contrib-python-headless
 Pillow
 rembg[cpu]
