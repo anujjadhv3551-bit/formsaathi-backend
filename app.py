@@ -17,7 +17,7 @@ from google import genai
 app = Flask(__name__)
 CORS(app)
 
-client = genai.Client(api_key=os.environ.get("AQ.Ab8RN6JlH5Khw-hc6WHLru8qOiEgd085HJLUqDY-BzdFdSlExw"))
+client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 
 # ─────────────────────────────────────────
 # DOWNLOAD FACE CASCADE
