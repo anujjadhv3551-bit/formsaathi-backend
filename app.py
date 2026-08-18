@@ -9,7 +9,7 @@ import os
 import json
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from google import genai
+import google.generativeai as genai
 
 # ─────────────────────────────────────────
 # SETUP
@@ -17,7 +17,7 @@ from google import genai
 app = Flask(__name__)
 CORS(app)
 
-client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 
 # ─────────────────────────────────────────
 # DOWNLOAD FACE CASCADE
@@ -336,9 +336,8 @@ def chat_with_formSaathi(user_query, conversation_history=[], current_form=None)
     User Question: {user_query}
     """
 
-    response = client.models.generate_content(
-        model="gemini-2.0-flash-lite",
-        contents=full_prompt
+  model = genai.GenerativeModel("gemini-3.5-flash-lite")
+response = model.generate_content(full_prompt)
     )
 
     suggestions = get_follow_up_suggestions(user_query, current_form)
